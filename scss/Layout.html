@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>medical-review</title>
+  <meta charset="utf-8">
+  <style>
+    html {
+      display: block;
+    }
+
+    :root {
+      --bs-blue: #0d6efd;
+      --bs-indigo: #6610f2;
+      --bs-purple: #6f42c1;
+      --bs-pink: #d63384;
+      --bs-red: #dc3545;
+      --bs-orange: #fd7e14;
+      --bs-yellow: #ffc107;
+      --bs-green: #198754;
+      --bs-teal: #20c997;
+      --bs-cyan: #0dcaf0;
+      --bs-white: #fff;
+      --bs-gray: #6c757d;
+      --bs-gray-dark: #343a40;
+      --bs-gray-100: #f8f9fa;
+      --bs-gray-200: #e9ecef;
+      --bs-gray-300: #dee2e6;
+      --bs-gray-400: #ced4da;
+      --bs-gray-500: #adb5bd;
+      --bs-gray-600: #6c757d;
+      --bs-gray-700: #495057;
+      --bs-gray-800: #343a40;
+      --bs-gray-900: #212529;
+      --bs-primary: #34558b;
+      --bs-secondary: #6c757d;
+      --bs-success: #198754;
+      --bs-info: #50a5d5;
+      --bs-warning: #ffc107;
+      --bs-danger: #dc3545;
+      --bs-light: #f8f9fa;
+      --bs-dark: #151313;
+      --bs-primary-rgb: 52,85,139;
+      --bs-secondary-rgb: 108,117,125;
+      --bs-success-rgb: 25,135,84;
+      --bs-info-rgb: 80,165,213;
+      --bs-warning-rgb: 255,193,7;
+      --bs-danger-rgb: 220,53,69;
+      --bs-light-rgb: 248,249,250;
+      --bs-dark-rgb: 21,19,19;
+      --bs-white-rgb: 255,255,255;
+      --bs-black-rgb: 0,0,0;
+      --bs-body-color-rgb: 33,37,41;
+      --bs-body-bg-rgb: 255,255,255;
+      --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --bs-gradient: linear-gradient(180deg,hsla(0,0%,100%,0.15),hsla(0,0%,100%,0));
+      --bs-body-font-family: var(--bs-font-sans-serif);
+      --bs-body-font-size: 1rem;
+      --bs-body-font-weight: 400;
+      --bs-body-line-height: 1.5;
+      --bs-body-color: #212529;
+      --bs-body-bg: #fff;
+      --vs-disabled-bg: var(--vs-state-disabled-bg);
+      --vs-disabled-color: var(--vs-state-disabled-color);
+      --vs-disabled-cursor: var(--vs-state-disabled-cursor);
+      --vs-transition-timing-function: cubic-bezier(1,0.5,0.8,1);
+      --vs-transition-duration: 0.15s;
+      --vs-colors--lightest: rgba(60,60,60,0.26);
+      --vs-colors--light: rgba(60,60,60,0.5);
+      --vs-colors--dark: #333;
+      --vs-colors--darkest: rgba(0,0,0,0.15);
+      --vs-search-input-color: inherit;
+      --vs-search-input-placeholder-color: inherit;
+      --vs-font-size: 1rem;
+      --vs-line-height: 1.4;
+      --vs-state-disabled-bg: #f8f8f8;
+      --vs-state-disabled-color: var(--vs-colors--light);
+      --vs-state-disabled-controls-color: var(--vs-colors--light);
+      --vs-state-disabled-cursor: not-allowed;
+      --vs-border-color: var(--vs-colors--lightest);
+      --vs-border-width: 1px;
+      --vs-border-style: solid;
+      --vs-border-radius: 4px;
+      --vs-actions-padding: 4px 6px 0 3px;
+      --vs-controls-color: var(--vs-colors--light);
+      --vs-controls-size: 1;
+      --vs-controls--deselect-text-shadow: 0 1px 0 #fff;
+      --vs-selected-bg: #f0f0f0;
+      --vs-selected-color: var(--vs-colors--dark);
+      --vs-selected-border-color: var(--vs-border-color);
+      --vs-selected-border-style: var(--vs-border-style);
+      --vs-selected-border-width: var(--vs-border-width);
+      --vs-dropdown-bg: #fff;
+      --vs-dropdown-color: inherit;
+      --vs-dropdown-z-index: 1000;
+      --vs-dropdown-min-width: 160px;
+      --vs-dropdown-max-height: 350px;
+      --vs-dropdown-box-shadow: 0px 3px 6px 0px var(--vs-colors--darkest);
+      --vs-dropdown-option-bg: #000;
+      --vs-dropdown-option-color: var(--vs-dropdown-color);
+      --vs-dropdown-option-padding: 3px 20px;
+      --vs-dropdown-option--active-bg: #5897fb;
+      --vs-dropdown-option--active-color: #fff;
+      --vs-dropdown-option--deselect-bg: #fb5858;
+      --vs-dropdown-option--deselect-color: #fff;
+      --vs-transition-timing-function: cubic-bezier(1,-0.115,0.975,0.855);
+      --vs-transition-duration: 150ms; 
+    }
+
+    #app, .wrap, body, html {
+      height: 100%;
+      font-family: Noto Sans CJK TC,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--bs-body-font-family);
+      font-size: var(--bs-body-font-size);
+      font-weight: var(--bs-body-font-weight);
+      line-height: var(--bs-body-line-height);
+      color: var(--bs-body-color);
+      text-align: var(--bs-body-text-align);
+      background-color: var(--bs-body-bg);
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    *, :after, :before {
+      box-sizing: border-box;
+    }
+
+    .bg-light {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .bg-body {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-body-bg-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    .bg-white {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important;
+    }
+
+    div {
+      display: block;
+    }
+
+    dl, ol, ul {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    ol, ul {
+      padding-left: 2rem;
+    }
+
+    ul {
+      display: block;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+    }
+
+    li {
+      display: list-item;
+      text-align: -webkit-match-parent;
+    }
+
+    a {
+      color: #34558b;
+      text-decoration: underline;
+    }
+
+    button, input, optgroup, select, textarea {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    button, select {
+      text-transform: none;
+    }
+
+    button {
+      border-radius: 0;
+      appearance: auto;
+      writing-mode: horizontal-tb !important;
+      text-rendering: auto;
+      letter-spacing: normal;
+      word-spacing: normal;
+      line-height: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: center;
+      align-items: flex-start;
+      cursor: default;
+      box-sizing: border-box;
+      margin: 0em;
+      padding: 1px 6px;
+      border-width: 2px;
+      border-style: outset;
+      border-color: buttonborder;
+      border-image: initial;
+    }
+
+    [type=button], [type=reset], [type=submit], button {
+      -webkit-appearance: button;
+    }
+
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
+      color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+      border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
+    }
+
+    .bottom-0 {
+      bottom: 0!important;
+    }
+
+    .btn {
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .btn-link {
+      text-decoration: none;
+      font-weight: 400;
+      color: #34558b;
+      text-decoration: underline;
+    }
+
+    .link-primary {
+      color: #34558b;
+    }
+
+    .link-secondary {
+      color: #6c757d;
+    }
+
+    .btn.disabled, .btn:disabled, fieldset:disabled .btn {
+      pointer-events: none;
+      opacity: .65;
+    }
+
+    .btn-link.disabled, .btn-link:disabled {
+      color: #6c757d;
+    }
+
+    .btn-outline-primary {
+      color: #34558b;
+      border-color: #34558b;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #34558b;
+      border-color: #34558b;
+    }
+
+    .sidebr .btn {
+      min-height: 45px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      width: 100%;
+      padding-right: var(--bs-gutter-x,.75rem);
+      padding-left: var(--bs-gutter-x,.75rem);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    img{
+      vertical-align: middle;
+      overflow-clip-margin: content-box;
+      overflow: clip;
+    }
+
+    .img-fluid, .img-thumbnail {
+      max-width: 100%;
+      height: auto;
+    }
+
+    i {
+      font-style: italic;
+    }
+
+    .bi-chevron-down:before {
+      content: "\f282";
+    }
+
+    .bi:before, [class*=" bi-"]:before, [class^=bi-]:before {
+      display: inline-block;
+      font-family: bootstrap-icons!important;
+      font-style: normal;
+      font-weight: 400!important;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: -0.125em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .h3, h3 {
+      font-size: calc(1.3rem + .6vw);
+    }
+
+    .h5, h5 {
+      font-size: 1.25rem;
+    }
+
+    h3 {
+      display: block;
+      font-size: 1.17em;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+    }
+
+    .start-0 {
+      left: 0!important;
+    }
+    
+    .end-0 {
+      right: 0!important;
+    }
+
+    .text-nowrap {
+      white-space: nowrap!important;
+    }
+
+    .text-secondary {
+      --bs-text-opacity: 1;
+      color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
+    }
+
+    .navbar {
+      height: 64px;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 20%);
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .navbar-brand {
+      padding-top: 0.3125rem;
+      padding-bottom: 0.3125rem;
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .navbar-light .navbar-toggler {
+      color: rgba(0,0,0,.55);
+      border-color: rgba(0,0,0,.1);
+    }
+
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar-toggler {
+      padding: 0.25rem 0.75rem;
+      font-size: 1.25rem;
+      line-height: 1;
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-radius: 0.25rem;
+      transition: box-shadow .15s ease-in-out;
+    }
+
+    .navbar-toggler-icon {
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 100%;
+    }
+
+    .navbar-light .navbar-brand, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+      color: rgba(0,0,0,.9);
+    }
+
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+      display: flex;
+      flex-wrap: inherit;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #151313;
+      text-decoration: none;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;    
+    }
+
+    .navbar-nav .nav-link {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .nav-item {
+      cursor: pointer;
+    }
+
+    .nav-item:not(:last-child) {
+      margin-right: 64px;
+    }
+
+    .navbar-collapse {
+      flex-basis: 100%;
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .collapse:not(.show) {
+      display: none;
+    }
+
+    .col {
+      flex: 1 0 0%;
+    }
+
+    .col-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+
+    .sidebr {
+      padding: 40px 20px;
+      width: 100%;
+      max-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      background-color: #212529;
+      color: #fff;
+    }
+
+    .footer__link {
+      background-color: transparent;
+      border: 0;
+      text-align: left;
+      padding: 0;
+      color: #fff;
+      transition: .2s ease-out;
+      font-weight: 300;
+    }
+
+    .footer__link.active {
+      color: #0dcaf0;
+      text-decoration: underline;
+    }
+
+    .dropdown, .dropend, .dropstart, .dropup {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      z-index: 1000;
+      display: none;
+      min-width: 10rem;
+      padding: 0.5rem 0;
+      margin: 0;
+      font-size: 1rem;
+      color: #212529;
+      text-align: left;
+      list-style: none;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 0.25rem;
+    }
+
+    .dropdown-menu-end {
+      --bs-position: end;
+    }
+
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 0.25rem 1rem;
+      clear: both;
+      font-weight: 400;
+      color: #212529;
+      text-align: inherit;
+      text-decoration: none;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .mobile-menu {
+      top: 70px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu .list-group {
+      overflow: auto;
+      padding-bottom: 50px;
+    }
+
+    .mobile-menu .btn {
+      min-height: 60px;
+    }
+    
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      border-radius: 0.25rem;
+    }
+
+    .list-group-flush {
+      border-radius: 0;
+    }
+
+    .list-group-item {
+      position: relative;
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #212529;
+      text-decoration: none;
+      background-color: #fff;
+      border: 1px solid rgba(0,0,0,.125);
+    }
+
+    .list-group-item-action {
+      width: 100%;
+      color: #495057;
+      text-align: inherit;
+    }
+
+    .list-group-flush>.list-group-item {
+      border-width: 0 0 1px;
+    }
+
+    .list-group-item+.list-group-item {
+      border-top-width: 0;
+    }
+
+    .list-group-item:first-child {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+    }
+
+    .row {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(var(--bs-gutter-y)*-1);
+      margin-right: calc(var(--bs-gutter-x)*-0.5);
+      margin-left: calc(var(--bs-gutter-x)*-0.5);
+    }
+
+    .row>* {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      padding-right: calc(var(--bs-gutter-x)*0.5);
+      padding-left: calc(var(--bs-gutter-x)*0.5);
+      margin-top: var(--bs-gutter-y);
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 768px;
+      margin: auto;
+    }
+
+    .row.content {
+      height: 450px
+    }
+
+    .flex-row {
+      flex-direction: row!important;
+    }
+
+    .flex-column {
+      flex-direction: column!important;
+    }
+
+    .logo {
+      border: 0;
+      background-color: transparent;
+    }
+
+    .justify-content-start {
+      justify-content: flex-start!important;
+    }
+
+    .justify-content-end {
+      justify-content: flex-end!important;
+    }
+
+    .align-items-center {
+      align-items: center!important;
+    }
+
+    .position-fixed {
+      position: fixed!important;
+    }
+
+    .shadow-sm {
+      box-shadow: 0 0 6px rgba(21,19,19,.17)!important;
+    }
+
+    .overflow-auto {
+      overflow: auto!important;
+    }
+
+    .pe-auto {
+      pointer-events: auto!important;
+    }
+
+    .h-100 {
+      height: 100%!important;
+    }
+
+    .fs-7 {
+      font-size: 14px!important;
+    }
+
+    .p-0 {
+      padding: 0!important;
+    }
+
+    .p-3 {
+      padding: 1rem!important;
+    }
+
+    .p-5 {
+      padding: 3rem!important;
+    }
+
+    .mb-5 {
+      margin-bottom: 3rem!important;
+    }
+
+    .ms-2 {
+      margin-left: 0.5rem!important;
+    }
+    
+    .mt-4 {
+      margin-top: 1.5rem!important;
+    }
+
+    .ms-auto {
+      margin-left: auto!important;
+    }
+
+    .g-2, .gx-2 {
+      --bs-gutter-x: 0.5rem;
+    }
+
+    .gap-2 {
+      gap: 0.5rem!important;
+    }
+
+    .d-grid {
+      display: grid!important;
+    }
+
+    .d-none {
+      display: none!important;
+    }
+
+    .d-flex {
+      display: flex!important;
+    }
+
+    .w-100 {
+      width: 100%!important;
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      :root {
+        scroll-behavior: smooth;
+      }
+    }
+
+    @media (min-width: 576px) {
+      .container, .container-sm {
+        max-width: 540px;
+      }
+      .col-sm-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .container, .container-md, .container-sm {
+        max-width: 720px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+      }
+      .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+      .navbar-expand-lg .navbar-toggler, .navbar-expand-lg .offcanvas-header {
+        display: none;
+      }
+      .navbar-expand-lg .navbar-collapse {
+        display: flex!important;
+        flex-basis: auto;
+      }
+      .d-lg-flex {
+        display: flex!important;
+      }
+      .offset-lg-3 {
+        margin-left: 25%;
+      }
+      .col-lg-3 {
+        flex: 0 0 auto;
+        width: 25%;
+      }
+    }
+
+    @media (min-width: 1200px){
+      .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1140px;
+      }
+      .h3, h3 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid h-100">
+      <button class="navbar-brand logo h-100">
+        <img class="img-fluid h-100" src="https://med.andyjjrt.cc/img/logo.d3e0944a.png" alt="醫療好評網">
+      </button>
+      <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <div class="row gx-2 ms-auto">
+          <div class="col">
+            <div class="dropdown">
+              <button type="button" class="btn btn-link text-nowrap" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">醫師/醫院帳號由此入</button>
+              <ul class="dropdown-menu dropdown-menu-end user-icon__menu" aria-labelledby="dropdownMenuLink">
+                <li><button class="dropdown-item user-icon__menu__item"> 醫師帳號 </button></li>
+                <li><button class="dropdown-item user-icon__menu__item pe-auto"> 醫院帳號 </button></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col">
+            <button class="btn btn-outline-primary"> 登入 </button>
+          </div>
+          <div class="col">
+            <button class="btn btn-primary" style="width: 168px;"> 註冊 </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--
+    <div class="position-fixed end-0 start-0 bottom-0 bg-body mobile-menu d-lg-none">
+      <div class="row justify-content-end"><div class="col-auto">
+        <button type="button" class="btn bg-white text-secondary">
+          <i class="bi bi-x" style="color: currentcolor; font-size: 24px; line-height: 24px;"></i>
+        </button>
+      </div>
+    </div>
+    <div class="list-group list-group-flush">
+      <button type="button" class="btn list-group-item list-group-item-action link-primary"> 註冊 </button>
+      <button type="button" class="btn list-group-item list-group-item-action link-primary"> 登入 </button>
+      <div class="list-group-item list-group-item-action p-0">
+        <button type="button" class="btn btn-link w-100 d-flex align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#firmAccountCollapse" aria-expanded="false">
+          <span> 醫師/醫院帳號 </span>
+          <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+        </button>
+        <div class="border-0 collapse" id="firmAccountCollapse" style="">
+          <button type="button" class="btn list-group-item list-group-item-action"> 醫師帳號 </button>
+          <button type="button" class="btn list-group-item list-group-item-action"> 醫院帳號 </button>
+        </div></div><div class="list-group-item list-group-item-action p-0">
+          <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchCollapse">
+            <span>搜尋</span>
+            <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+          </button><div class="collapse border-0" id="searchCollapse">
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchHospitalCollapse">
+                <span> 醫院搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchHospitalCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">醫學中心</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">區域醫院</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">地區醫院</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">基層診所</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchDoctorCollapse">
+                <span> 醫師搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchDoctorCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">主要科別</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">專長</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">醫院名稱</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">生理性別</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchSubjectCollapse">
+                <span> 科別搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchSubjectCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">家醫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">一般內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">一般外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">小兒科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">婦產科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">骨科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">神經外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">泌尿（內外）科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">耳鼻喉科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">眼科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">皮膚科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">神經內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">精神科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">整形外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">急診科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">職業醫學科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">放射線科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">牙科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腎臟科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">胸腔內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">新陳代謝科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">中醫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">心臟（內外科）</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">肝膽腸胃（內外）科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">胸腔外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">大腸直腸科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">血液腫瘤科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">風濕免疫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">感染科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">月子中心</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">健康檢查中心</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchDiseaseCollapse">
+                <span> 疾病與手術搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchDiseaseCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">氣喘</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">糖尿病</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">鼻竇炎</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腦中風</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腎臟病</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">血液透析</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腹膜透析</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">子宮肌瘤手術</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">人工關節手術</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn list-group-item list-group-item-action"> 比較 </button>
+        <button type="button" class="btn list-group-item list-group-item-action"> 健康小常識 </button>
+        <button type="button" class="btn list-group-item list-group-item-action"> 常見問題 </button>
+      </div>
+    </div>
+    -->
+  </nav>
+  <div class="navbar d-none d-lg-flex">
+    <div class="container main-content">
+      <ul class="navbar-nav flex-row justify-content-start">
+        <li class="nav-item"><a class="nav-link active" aria-current="page">首頁</a></li>
+        <li class="nav-item"><a class="nav-link">搜尋</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">比較</a></li>
+        <li class="nav-item"><a class="nav-link">常見問題</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <div class="d-flex">
+    <div class="sidebr shadow-sm d-none d-lg-flex flex-column overflow-auto">
+      <div class="p-3 fs-7">疾病與手術</div>
+      <button class="btn btn-link link-secondary" disabled="">氣喘</button>
+      <button class="btn btn-link link-secondary" disabled="">急性心肌梗塞</button>
+      <button class="btn btn-link link-secondary" disabled="">糖尿病</button>
+      <button class="btn btn-link link-secondary" disabled="">人工膝關節手術</button>
+      <button class="btn btn-link link-secondary" disabled="">腦中風</button>
+      <button class="btn btn-link link-secondary" disabled="">鼻竇炎</button>
+      <button class="btn btn-link link-secondary" disabled="">子宮肌瘤手術</button>
+      <button class="btn btn-link link-secondary" disabled="">消化性潰瘍</button>
+      <button class="btn btn-link link-secondary" disabled="">血液透析</button>
+      <button class="btn btn-link link-secondary" disabled="">腹膜透析</button>
+      <button class="btn btn-link link-secondary" disabled="">慢性腎臟病</button>
+      <div class="p-3 fs-7 mt-4">專長</div>
+      <button class="btn btn-link link-secondary" disabled="">骨質疏鬆</button>
+      <button class="btn btn-link link-secondary" disabled="">創傷</button>
+      <button class="btn btn-link link-secondary" disabled="">腫瘤</button>
+      <button class="btn btn-link link-secondary" disabled="">斜視</button>
+      <button class="btn btn-link link-secondary" disabled="">打鼾</button>
+      <button class="btn btn-link link-secondary" disabled="">AA</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-lg-3 d-grid gap-2 mb-5">
+        <h3 class="h5">關於我們</h3>
+        <button class="footer__link">關於我們</button>
+        <button class="footer__link"> 隱私政策 </button>
+        <button class="footer__link"> 服務條款 </button>
+      </div>
+      <div class="col-sm-4 col-lg-3 offset-lg-3 d-grid gap-2 mb-5">
+        <h3 class="h5">搜尋連結</h3><button class="footer__link">找醫師</button>
+        <button class="footer__link">找醫療機構</button>
+        <button class="footer__link">找科別</button>
+        <button class="footer__link">找疾病或手術</button>
+      </div>
+      <div class="col-sm-4 col-lg-3 d-grid gap-2 mb-5">
+        <h3 class="h5">聯絡資訊</h3>
+        <button class="footer__link active">意見回饋</button>
+        <button class="footer__link">fjuph316@gmail.com</button>
+        <button class="footer__link">02-29053434</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
