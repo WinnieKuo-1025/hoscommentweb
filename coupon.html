@@ -962,37 +962,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preload-content">
-            <div id="original-load"></div>
-        </div>
-    </div>
-
-    <!-- Subscribe Modal -->
-    <div class="subscribe-newsletter-area">
-        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <div class="modal-body">
-                        <h5 class="title">Subscribe to my newsletter</h5>
-                        <form action="#" class="newsletterForm" method="post">
-                            <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
-                            <button type="submit" class="btn original-btn">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
-
-        <!-- Top Header Area -->
         <div>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid h-100">
@@ -1014,7 +983,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <button class="btn btn-outline-primary"> 登入 </button>
+                    <button class="btn btn-outline-primary"><a href ="index.html"> 登入 </a></button>
                   </div>
                   <div class="col">
                     <button class="btn btn-primary" style="width: 168px;"> 註冊 </button>
@@ -1023,7 +992,119 @@
               </div>
             </div>
             
-            
+                
+    <!--
+    <div class="position-fixed end-0 start-0 bottom-0 bg-body mobile-menu d-lg-none">
+      <div class="row justify-content-end"><div class="col-auto">
+        <button type="button" class="btn bg-white text-secondary">
+          <i class="bi bi-x" style="color: currentcolor; font-size: 24px; line-height: 24px;"></i>
+        </button>
+      </div>
+    </div>
+    <div class="list-group list-group-flush">
+      <button type="button" class="btn list-group-item list-group-item-action link-primary"> 註冊 </button>
+      <button type="button" class="btn list-group-item list-group-item-action link-primary"> 登入 </button>
+      <div class="list-group-item list-group-item-action p-0">
+        <button type="button" class="btn btn-link w-100 d-flex align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#firmAccountCollapse" aria-expanded="false">
+          <span> 醫師/醫院帳號 </span>
+          <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+        </button>
+        <div class="border-0 collapse" id="firmAccountCollapse" style="">
+          <button type="button" class="btn list-group-item list-group-item-action"> 醫師帳號 </button>
+          <button type="button" class="btn list-group-item list-group-item-action"> 醫院帳號 </button>
+        </div></div><div class="list-group-item list-group-item-action p-0">
+          <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchCollapse">
+            <span>搜尋</span>
+            <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+          </button><div class="collapse border-0" id="searchCollapse">
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchHospitalCollapse">
+                <span> 醫院搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchHospitalCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">醫學中心</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">區域醫院</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">地區醫院</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">基層診所</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchDoctorCollapse">
+                <span> 醫師搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchDoctorCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">主要科別</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">專長</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">醫院名稱</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">生理性別</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchSubjectCollapse">
+                <span> 科別搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchSubjectCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">家醫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">一般內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">一般外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">小兒科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">婦產科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">骨科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">神經外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">泌尿（內外）科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">耳鼻喉科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">眼科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">皮膚科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">神經內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">精神科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">整形外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">急診科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">職業醫學科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">放射線科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">牙科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腎臟科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">胸腔內科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">新陳代謝科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">中醫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">心臟（內外科）</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">肝膽腸胃（內外）科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">胸腔外科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">大腸直腸科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">血液腫瘤科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">風濕免疫科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">感染科</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">月子中心</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">健康檢查中心</button>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action p-0">
+              <button type="button" class="btn btn-link w-100 d-flex align-items-center link-dark justify-content-between" data-bs-toggle="collapse" data-bs-target="#searchDiseaseCollapse">
+                <span> 疾病與手術搜尋 </span>
+                <i class="bi bi-chevron-down ms-2" style="color: currentcolor; font-size: 18px; line-height: 18px;"></i>
+              </button>
+              <div class="collapse border-0" id="searchDiseaseCollapse">
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">氣喘</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">糖尿病</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">鼻竇炎</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腦中風</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腎臟病</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">血液透析</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">腹膜透析</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">子宮肌瘤手術</button>
+                <button type="button" class="btn list-group-item list-group-item-action link-secondary">人工關節手術</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn list-group-item list-group-item-action"> 比較 </button>
+        <button type="button" class="btn list-group-item list-group-item-action"> 健康小常識 </button>
+        <button type="button" class="btn list-group-item list-group-item-action"> 常見問題 </button>
+      </div>
+    </div>
+    -->
           </nav>
           <div class="navbar d-none d-lg-flex">
             <div class="container main-content">
@@ -1032,6 +1113,8 @@
                 <li class="nav-item"><a class="nav-link">搜尋</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">比較</a></li>
                 <li class="nav-item"><a class="nav-link">常見問題</a></li>
+                <li class="nav-item"><a href ="comment.html" class="nav-link">討論版</a></li>
+                <li class="nav-item"><a href ="#" class="nav-link" >點數商域</a></li>
               </ul>
             </div>
           </div>
@@ -1072,10 +1155,11 @@
                   <div class="col-sm-4">
                     <label class="visually-hidden" for="autoSizingSelect">Preference</label>
                     <select class="form-select" id="autoSizingSelect">
-                      <option selected>Choose...</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option selected>選擇全部分類</option>
+                      <option value="1">旅遊住宿</option>
+                      <option value="2">美食餐廳</option>
+                      <option value="3">公益捐贈</option>
+                      <option value="4">限時活動</option>
                     </select>
                   </div>
                   
@@ -1222,19 +1306,10 @@
       </div>
         </div>
           
-  
-
-
 
         
     <!-- ##### Breadcumb Area Start ##### -->
-    
-
     <!-- ##### Breadcumb Area End ##### -->
-
-    
-
-
 
 
       <div class="footer p-5">
